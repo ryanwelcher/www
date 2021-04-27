@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import '@fontsource/inter/700.css'
 import '@fontsource/inter/400.css'
 
+import Head from 'next/head'
 import HeadTags from '../components/common/HeadTags'
 
 import { ReactElement, ReactNode, useEffect } from 'react'
@@ -56,6 +57,16 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   return getLayout(
     <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+      </Head>
       <HeadTags />
       <Component {...pageProps} />
     </>
