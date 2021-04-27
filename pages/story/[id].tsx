@@ -25,9 +25,11 @@ import { get, list } from '../../lib/api/stories'
 import StoryDetail from '../../components/stories/StoryDetail'
 import { storyCite } from '../../components/stories/model'
 import FloatingRibbon, { Button } from '../../components/common/FloatingRibbon'
+import HeadTags from '../../components/common/HeadTags'
+import { storyImage } from '../../components/stories/model'
 
 const shareIconSize = 64
-const contentSize = 150
+const contentSize = 130
 
 interface StoryPageProps {
   story: Story
@@ -50,6 +52,7 @@ export default function StoryPage({ story }: StoryPageProps) {
 
   return (
     <>
+      <HeadTags title={story.title} description={description} previewImage={storyImage(story)} />
       <Box>
         <StoryDetail story={story} onClose={handleClose} />
       </Box>

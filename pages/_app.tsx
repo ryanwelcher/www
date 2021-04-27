@@ -1,7 +1,8 @@
 import '../styles/globals.css'
 import '@fontsource/inter/700.css'
 import '@fontsource/inter/400.css'
-import Head from 'next/head'
+
+import HeadTags from '../components/common/HeadTags'
 
 import { ReactElement, ReactNode, useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -19,11 +20,6 @@ Sentry.init({
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 1.0,
 })
-
-const title = 'MyCovidStory.ca | The Stories of COVID-19 in Ontario'
-const description =
-  "Ontario is in a humanitarian crisis. If our leaders won't listen to the numbers, they must face our stories."
-const previewImage = 'https://www.mycovidstory.ca/img/landingpage-v2.jpg'
 
 type GetLayout = (page: ReactNode) => ReactElement
 type PageWithLayout = NextPage & {
@@ -60,26 +56,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   return getLayout(
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="icon" href="/favicon.ico" />
-
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={previewImage} />
-
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={previewImage} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="msapplication-TileColor" content="#da532c" />
-        <meta name="theme-color" content="#ffffff" />
-      </Head>
+      <HeadTags />
       <Component {...pageProps} />
     </>
   )
